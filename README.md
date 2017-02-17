@@ -1,0 +1,2 @@
+# NativeScript
+Groceries sample app
