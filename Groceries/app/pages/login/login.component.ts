@@ -66,23 +66,24 @@ export class LoginComponent implements OnInit {
   }
   toggleDisplay() {
     this.isLoggingIn = !this.isLoggingIn;
+    //this.setTextFieldColors();
     let container = <View>this.container.nativeElement;
     container.animate({
       backgroundColor: this.isLoggingIn ? new Color("white") : new Color("#301217"),
       duration: 200
-    });
+    });    
   }
 
   setTextFieldColors() {
     let emailTextField = <TextField>this.email.nativeElement;
     let passwordTextField = <TextField>this.password.nativeElement;
 
-    let mainTextcolor = new Color(this.isLoggingIn ? "black" : "#C4AFB4");
-    emailTextField.color = mainTextcolor;
-    passwordTextField.color = mainTextcolor;
+    let mainTextColor = new Color(this.isLoggingIn ? "black" : "#C4AFB4");
+    emailTextField.color = mainTextColor;
+    passwordTextField.color = mainTextColor;
 
     let hintColor = new Color(this.isLoggingIn ? "#ACA6A7" : "#C4AFB4");
-    setHintColor({ view: emailTextField, color : hintColor });
+    setHintColor({ view: emailTextField, color: hintColor });
     setHintColor({ view: passwordTextField, color: hintColor });
   }
 }
