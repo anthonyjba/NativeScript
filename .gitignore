@@ -30,6 +30,18 @@ Groceries/hooks
 Groceries/node_modules
 Groceries/app/App_Resources
 
+
+conference/app/**/*.js
+conference/platforms
+conference/hooks
+conference/node_modules
+
 HelloWorld
 opt
 rps-conf
+sample-Groceries
+item
+quitar
+rps-conf**
+hax**
+*.zip
