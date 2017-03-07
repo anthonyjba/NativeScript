@@ -1,5 +1,7 @@
 import { ISession, IRoomInfo, ISpeaker } from '../shared/interfaces';
 
+import faker = require('faker');
+
 let NUM_SPEAKERS = 40;
 let NUM_ROOM_INFOS = 10;
 let SESSION_LENGTH = 3; //60;
@@ -20,12 +22,12 @@ export function generateSessions(speakers: Array<ISpeaker>, roomInfos: Array<IRo
     var sessionList: Array<ISession> = [];
     var idSeed = 1000;
 
-    for (var i = 0; i <= NUM_SPEAKERS; i++) {
+    for (var i = 0; i <= SESSION_LENGTH; i++) {
             let s: ISession = {
                 id: (idSeed++).toString(),
-                title: "",
+                title: faker.name.jobTitle(),
                 isBreak: true,
-                room: '',
+                room: 'room' + i,
                 roomInfo: null,
                 speakers: [],
                 description: '',
