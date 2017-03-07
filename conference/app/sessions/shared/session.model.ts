@@ -1,4 +1,5 @@
 import { ISession, IRoomInfo, ISpeaker } from '../../shared/interfaces';
+//import { Observable } from 'data/observable';
 
 export class SessionModel implements ISession {
     private _session: ISession;
@@ -62,6 +63,7 @@ export class SessionModel implements ISession {
     set favorite(value: boolean){
         if(this._favorite !== value && !this._session.isBreak){
             this._favorite = value; 
+            //this.notify({ object: this, eventName: Observable.propertyChangeEvent, propertyName: 'favorite', value: this._favorite });
         }
     }
 

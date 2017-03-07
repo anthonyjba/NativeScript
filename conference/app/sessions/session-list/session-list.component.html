@@ -1,10 +1,10 @@
     <!-- List -->
-    <ListView [items]="items" class="list-group" separatorColor="#fac950">
-        <template nsTemplateKey="cell" let-item="item">
+    <ListView [items]="_sessionsService._allSessions" class="list-group" separatorColor="#fac950">
+        <template nsTemplateKey="cell" let-item="item" let-i="index">
             <GridLayout class="list-view-row" rows="*" columns="auto, *">
                 <GridLayout class="favourite-wrap" (tap)="toggleFavorite(item)" columns="auto"
 				rows="auto">
-                  <Image id="imgFav" stretch="none" cssClass="icon-image" [src]="favorite ? 'res://ic_add_to_fav_1' : 'res://ic_add_to_fav'" verticalAlignment="top" col="0" (tap)="toggleFavorite()"></Image>
+                  <Image id="imgFav" stretch="none" cssClass="icon-image" [src]="item.favorite ? 'res://ic_add_to_fav_1' : 'res://ic_add_to_fav'"></Image>
                 </GridLayout>
 
                 <StackLayout col="1">

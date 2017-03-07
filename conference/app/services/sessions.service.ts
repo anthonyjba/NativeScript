@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
 
+// app
+import * as fakeDataServiceModule from './fake-data.service';
 import { ISession } from '../shared/interfaces';
+import { SessionModel } from '../sessions/shared/session.model';
 
 @Injectable()
 export class SessionsService {
 
-    private sessionArray = new Array<ISession>(
+    public sessionsLoaded = false;
+    private _useHttpService : boolean = false;
+    public _allSessions: Array<SessionModel> = [];
+
+    private newSessions1 = new Array<ISession>(
             {
                 id: '1',
                 title: 'session 1',
@@ -30,8 +37,8 @@ export class SessionsService {
                 end: '2016-10-03T14:00:00Z',
                 room: 'room1',
                 roomInfo: {
-                    roomId: 'room1',
-                    name: 'myroom1',
+                    roomId: 'room2',
+                    name: 'myroom2',
                     url: '',
                     theme: ''
                 },
@@ -47,8 +54,8 @@ export class SessionsService {
                 end: '2016-10-03T15:00:00Z',
                 room: 'room2',
                 roomInfo: {
-                    roomId: 'room2',
-                    name: 'myroom2',
+                    roomId: 'room3',
+                    name: 'myroom3',
                     url: '',
                     theme: ''
                 },
@@ -59,12 +66,40 @@ export class SessionsService {
             }
     );
 
-    getItems(): ISession[] {
-        return this.sessionArray;
+    public loadSessions<T>(): Promise<T> {
+        return new Promise((resolve, reject) => {
+            if (this._useHttpService) {
+                return this.loadSessionsViaHttp<T>();
+            }
+            else {
+                this.loadSessionsViaFaker<Array<ISession>>()
+                    .then((newSessions: Array<ISession>) => {
+                        this._allSessions = newSessions.map(s => new SessionModel(s)); 
+                        this.sessionsLoaded = true;
+                        resolve(this._allSessions);       
+                    });
+            }
+        });
+        
     }
 
-    getItem(id: number): ISession {
-        return this.sessionArray.filter(item => parseInt(item.id) === id)[0];
+    private loadSessionsViaHttp<T>(): Promise<T> {
+        //return new Promise<T>(() => {});
+        return new Promise((resolve, reject) => {
+                this._allSessions = this.newSessions1.map(s => new SessionModel(s));
+                this.sessionsLoaded = true;
+                resolve(this._allSessions);
+            });
     }
 
+    private loadSessionsViaFaker<T>(): Promise<T> {
+        return new Promise<T>((resolve, reject) => {
+            let sessions = <any>fakeDataServiceModule.generateSessions(null, null);
+            resolve(sessions)
+        });
+    }
+
+    toggleFavorite(session: SessionModel) {
+        session.toggleFavorite();
+    }
 }
