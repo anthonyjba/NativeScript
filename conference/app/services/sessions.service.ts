@@ -84,7 +84,6 @@ export class SessionsService {
     }
 
     private loadSessionsViaHttp<T>(): Promise<T> {
-        //return new Promise<T>(() => {});
         return new Promise((resolve, reject) => {
                 this._allSessions = this.newSessions1.map(s => new SessionModel(s));
                 this.sessionsLoaded = true;
@@ -94,7 +93,9 @@ export class SessionsService {
 
     private loadSessionsViaFaker<T>(): Promise<T> {
         return new Promise<T>((resolve, reject) => {
-            let sessions = <any>fakeDataServiceModule.generateSessions(null, null);
+            let speakers = fakeDataServiceModule.generateSpeakers();
+            let roomInfos = fakeDataServiceModule.generateRoomInfos();
+            let sessions = <any>fakeDataServiceModule.generateSessions(speakers, roomInfos);
             resolve(sessions)
         });
     }

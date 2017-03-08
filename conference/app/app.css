@@ -41,6 +41,11 @@ Page {
     margin: 0;
 }
 
+.break-row {
+    padding: 12;
+    background-color: #FFFBF0;
+}
+
 .list-view-row {
     padding: 12 12 12 0;
 }

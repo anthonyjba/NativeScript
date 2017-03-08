@@ -17,11 +17,13 @@ tags
 
 .tscache
 .nvm
-.vscode
+.vscode/launch.json
+.launch
 .DS_Store
 npm-debug.log
 nativescript-angular*.tgz
 
+Groceries/.vscode
 Groceries/app/**/*.js
 Groceries/app/global.d.ts
 Groceries/platforms

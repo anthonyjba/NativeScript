@@ -11,8 +11,6 @@ import { SessionsService } from '../../services/sessions.service'
     templateUrl: "session-list.component.html"
 })
 export class SessionListComponent implements OnInit {
-    //items: ISession[];    
-    //favorite = false;
     private _selectedIndex: number = 0;
 
     constructor(private _sessionsService: SessionsService) { }
@@ -20,7 +18,7 @@ export class SessionListComponent implements OnInit {
     ngOnInit() : void {
         this._sessionsService.loadSessions<Array<ISession>>()
                 .then(data => { 
-                    console.dump(data);
+                    //console.dump(data);
                 } );        
     }
 

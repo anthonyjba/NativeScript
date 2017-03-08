@@ -1,0 +1,12 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "files.exclude": {
+        "hooks/": true,
+        "**/*.js": true,
+        ".vscode/": true,
+        "node_modules/": true,
+        "platforms/": true,
+        "tsconfig.json": true,
+        "references.d.ts": true
+    }
+}
