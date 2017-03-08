@@ -1,0 +1,26 @@
+<StackLayout>
+    <GridLayout rows="auto, *">
+
+        <!-- HEADER -->
+        <GridLayout columns="auto, *" rows="auto, auto" class="page-header">
+
+            <GridLayout row="1" [visibility]="session.isBreak ? 'collapsed' : 'visible' " columns="aurto" 
+                class="favorite-wrap" horizontalAlignment="left">
+                <Image id="imgFav" [src]="session.favorite ? 'res://ic_add_to_fav_1' : 'res://ic_add_to_fav' "
+                    stretch="none" class="icon-image"></Image>
+            </GridLayout>
+
+            <StackLayout margin="16 16 16 0" row="1" col="1">
+                <Label [Text]="session.title" textWrap="true" class="session-page-title"></Label>
+                <Label [Text]="session.rabge + ', '+ session.room" textWrap="true" class="session-page-subtitle"></Label>
+            </StackLayout>
+
+        </GridLayout>
+
+        <!-- Content -->
+        <ScrollView row="1" id="scroll">
+
+        </ScrollView>
+
+    </GridLayout>
+</StackLayout>
