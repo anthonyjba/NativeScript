@@ -7,8 +7,8 @@ import { SessionsService } from '../../services/sessions.service'
 @Component({
     moduleId: module.id,
     selector: "session-list",
-    styleUrls: ["session-list.component.css"],
-    templateUrl: "session-list.component.html"
+    templateUrl: "session-list.component.html",
+    styleUrls: ["session-list.component.css"]
 })
 export class SessionListComponent implements OnInit {
     private _selectedIndex: number = 0;

@@ -3,13 +3,18 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 
 import { SessionsComponent } from "./sessions/sessions.component";
+import { SessionDetailsComponent } from "./sessions/session-details/session-details.component";
 
 const routes: Routes = [
     {
         path: 'sessions',
         component: SessionsComponent
     },
-    { path: "", redirectTo: "/sessions", pathMatch: "full" },    
+    {
+        path: 'session-details',
+        component: SessionDetailsComponent
+    },
+    { path: "", redirectTo: "/session-details", pathMatch: "full" },    
 ];
 
 @NgModule({

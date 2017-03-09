@@ -29,6 +29,11 @@ Page {
     margin-right: 16;
 }
 
+.info {
+    font-size: 14;
+    color: #555555;
+}
+
 .info-bigger {
     color: #555555;
     font-size: 17;

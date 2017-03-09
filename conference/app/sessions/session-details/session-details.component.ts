@@ -7,7 +7,7 @@ import { SessionModel } from '../shared/session.model'
 @Component({
     moduleId: module.id,
     selector: 'session-details',
-    template: 'session-details.component.html',
+    templateUrl: 'session-details.component.html',    
     styleUrls: ['session-details.component.css']
 })
 export class SessionDetailsComponent implements OnInit {
@@ -15,7 +15,9 @@ export class SessionDetailsComponent implements OnInit {
     public session: SessionModel;
 
     ngOnInit() {
-        var firstSession = loadFirstSessionViaFaker();
+        this.session = loadFirstSessionViaFaker();
+        console.log("Session Detail: ")
+        console.dump(this.session);
     }
 }
 

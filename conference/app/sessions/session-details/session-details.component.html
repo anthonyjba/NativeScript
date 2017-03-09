@@ -1,25 +1,54 @@
-<StackLayout>
+<StackLayout class="session-detail-wrapper">
     <GridLayout rows="auto, *">
-
-        <!-- HEADER -->
+        <!-- Header -->
         <GridLayout columns="auto, *" rows="auto, auto" class="page-header">
-
-            <GridLayout row="1" [visibility]="session.isBreak ? 'collapsed' : 'visible' " columns="aurto" 
-                class="favorite-wrap" horizontalAlignment="left">
+            
+            <GridLayout row="1" [visibility]="session.isBreak ? 'collapsed' : 'visible' " columns="auto" 
+                class="favourite-wrap" horizontalAlignment="left">
                 <Image id="imgFav" [src]="session.favorite ? 'res://ic_add_to_fav_1' : 'res://ic_add_to_fav' "
                     stretch="none" class="icon-image"></Image>
             </GridLayout>
 
             <StackLayout margin="16 16 16 0" row="1" col="1">
                 <Label [Text]="session.title" textWrap="true" class="session-page-title"></Label>
-                <Label [Text]="session.rabge + ', '+ session.room" textWrap="true" class="session-page-subtitle"></Label>
+                <Label [Text]="'Prueba, '+ session.room" textWrap="true" class="session-page-subtitle"></Label>
             </StackLayout>
 
         </GridLayout>
 
-        <!-- Content -->
+        <!-- Sessions Views -->
         <ScrollView row="1" id="scroll">
+            <GridLayout row="1" rows="auto, auto, auto, auto, *" columns="56, *" >
+                <!-- Description -->
+                <Label #lblDesc class="description" textWrap="true" col="1" id="txtDescription" [text]="session.descriptionShort"></Label>
 
+                <!-- Button -->
+                <Button #btnDesc text="MORE" class="more-button" row="1" col="1"></Button>
+
+                <!-- Line -->
+                <StackLayout class="horizontal-line" row="2" col="1" margin="0 0 0 0"></StackLayout>
+
+                <!-- Speakers -->
+                <Label text="SPEAKERS" class="section-header" row="3" col="1"></Label>
+
+                <ListView id="speakerList" [items]="session.speakers" row="4" colspan="2" 
+                    height="{{ session.speakers.length * 72 + 46 }}" selectedBackgroundColor="#fac950" separatorColor="#FFFFFF" >
+                    <template let-item="item">
+                        <GridLayout columns="56, *" class="speakers-row">
+                            <Image src="res://ic_add_to_fav_1" class="speaker-image" stretch="aspectFit" rowSpan="2"></Image>
+
+                            <StackLayout col="1">
+                                <StackLayout orientation="horizontal">
+                                    <Label [text]="item.name" class="info bold"></Label>
+                                    <Label [text]="item.twitterName ? ' (' + item.twitterName + ')' : '' " class="info" style="color: #A17201;"></Label>
+                                </StackLayout>
+
+                                <Label [text]="item.title" class="info" textWrap="true" style="font-style: italic;"></Label>
+                            </StackLayout>
+                        </GridLayout>
+                    </template>
+                </ListView>
+            </GridLayout>
         </ScrollView>
 
     </GridLayout>
